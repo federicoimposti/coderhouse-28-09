@@ -1,4 +1,9 @@
 require('dotenv').config();
+const minimist = require('minimist');
+
+const optionsMinimist = {alias: { p: 'port' }};
+const argv = minimist(process.argv.slice(2), optionsMinimist);
+
 const session = require("express-session");
 const passport = require("passport"); 
 const cookieParser = require("cookie-parser");
@@ -27,6 +32,8 @@ const io = new IOServer(httpServer);
 
 const MongoStore = require("connect-mongo");
 const mongoose = require('mongoose');
+
+const PORT = argv.port || 8080;
 
 try {
     mongoose.connect(process.env.MONGO_URI);
@@ -85,6 +92,6 @@ app.use('/', router);
     });
 });
 
-httpServer.listen(8080, () => {
-    console.log("server on port 8080");;
+httpServer.listen(PORT, () => {
+    console.log(`server on port ${PORT}`);
 })
