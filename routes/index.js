@@ -7,6 +7,7 @@ const login = require('./login');
 const logout = require('./logout');
 const register = require('./register');
 const loginError = require('./loginError');
+const info = require('./info');
 
 router.use('/', productFormRouter);
 router.use('/productos', productsRouter);
@@ -15,5 +16,6 @@ router.use('/login', login);
 router.use('/logout', logout);
 router.use('/register', register);
 router.use('/login-error', loginError);
+router.use('/info', info);
 
 module.exports = router;

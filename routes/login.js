@@ -16,7 +16,6 @@ login.post("/", passport.authenticate("local", { failureRedirect: "/login-error"
   }
 );
 
-
 login.get("/privada", auth, (req, res) => {
   res.send("La ruta es privada.");
 });

@@ -59,7 +59,7 @@ app.use(
         resave: true,
         saveUninitialized: true,
         rolling: true,
-        cookie: { maxAge: process.env.SESSION_COOKIE_MAXAGE },
+        cookie: { maxAge: 60000 },
     })
 );
 
