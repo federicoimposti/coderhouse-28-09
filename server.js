@@ -1,3 +1,4 @@
+require('dotenv').config();
 const session = require("express-session");
 const passport = require("passport"); 
 const cookieParser = require("cookie-parser");
@@ -24,13 +25,11 @@ const app = express();
 const httpServer = new HttpServer(app);
 const io = new IOServer(httpServer);
 
-const uri = "mongodb+srv://fimposti:CoderHouse27@hms.i5ds7.mongodb.net/?retryWrites=true&w=majority";
-
 const MongoStore = require("connect-mongo");
 const mongoose = require('mongoose');
 
 try {
-    mongoose.connect(uri);
+    mongoose.connect(process.env.MONGO_URI);
     console.log('Successful database connection');
   } catch (err) {
     throw new Error('Ocurrió un error al conectarse a la base de datos.', err);
@@ -46,14 +45,14 @@ app.use(cookieParser());
 app.use(
     session({
         store: new MongoStore({ 
-            mongoUrl: uri,
+            mongoUrl: process.env.MONGO_URI,
             mongoOptions: advanceOptions   
         }),     
-        secret: "coderhouse",
+        secret: process.env.SESSION_SECRET,
         resave: true,
         saveUninitialized: true,
         rolling: true,
-        cookie: { maxAge: 60000 },
+        cookie: { maxAge: process.env.SESSION_COOKIE_MAXAGE },
     })
 );
 
