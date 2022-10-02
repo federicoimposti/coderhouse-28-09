@@ -1,8 +1,10 @@
-## Backend Coderhouse - Auth
+## Backend Coderhouse - Process env
 
  1. Clonar el proyecto.
  2. Realizar la instalación de dependencias ejecutando `npm i`
- 4. En la raíz del proyecto ejecutar `nodemon server.js`
+ 4. En la raíz del proyecto ejecutar `nodemon server.js -p 8000`
 
-Para ingresar al login http://localhost:8080/
-Allí se podrá realizar el flujo de registro y logueo del usuario, tal como se indica en el ejercicio.
+Para ingresar a la info http://localhost:8080/info
+Allí se podrá visualizar la información requerida en el ejecricio
+
+La petición que calcula números randoms, se encuentra en la ruta localhost:8000/api/randoms?cant=500000000

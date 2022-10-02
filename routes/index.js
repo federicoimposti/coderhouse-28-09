@@ -8,10 +8,12 @@ const logout = require('./logout');
 const register = require('./register');
 const loginError = require('./loginError');
 const info = require('./info');
+const randoms = require('./randoms');
 
 router.use('/', productFormRouter);
 router.use('/productos', productsRouter);
 router.use('/api/productos-test', productsFakerRouter);
+router.use('/api/randoms', randoms);
 router.use('/login', login);
 router.use('/logout', logout);
 router.use('/register', register);
